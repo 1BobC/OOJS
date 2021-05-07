@@ -5,3 +5,5 @@ Object oriented javascript - can I handle it?
 <!-- #116. Object Literal Recap and creation of objects -->
 <!-- #117. Classes -->
 "am getting uncommited changes message on jscript file so am saving on git as the start of my investigation"
+<!-- #118. Class constructors -->
+<!-- #119. Class Methods & Method Chaining - finding the methods -->

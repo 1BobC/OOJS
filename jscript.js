@@ -61,15 +61,28 @@
 
 //constructor function
 class User {
-    constructor(){
+    constructor(username, email){          //for different usernames add (username)
         //set up object properties
-        this.username= 'mario';
+        this.username= username;
+        this.email= email;
+    }       //don't comma seperate inside a class - oh yeah?? we do inside objexts when creating properties
+    login(){
+        console.log(`${this.username} just logged in`);    //regular function using shorthand notation - arrow function does not bind the value to the keyword
     }
 }
 //the new keyword
 //1 - it creates a new empty object {}
 //2 - it binds the value of 'this' to the new empty object
 //3 - it calls the constructor function to build the object 
+//4 - properties have been created but not methods 
+// const userOne= new User();   //Notice anything? userOne and UserTwo are the same!!
+// const userTwo= new User();   //So see below how to avoid creating identical objects
 
-const userOne= new User();
-console.log(userOne);
+//#118. Class constructors
+const userOne= new User('mario', 'mario@rococode.scot');
+const userTwo= new User('luigi', 'luigi@rococode.scot'); //each one (object) is an instance of the user class
+
+console.log(userOne, userTwo);
+userOne.login();
+userTwo.login();     
+//#119. Class Methods & Method Chaining - finding the methods
