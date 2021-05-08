@@ -65,10 +65,25 @@ class User {
         //set up object properties
         this.username= username;
         this.email= email;
+        this.score= 0;      //see method chaining
     }       //don't comma seperate inside a class - oh yeah?? we do inside objexts when creating properties
     login(){
         console.log(`${this.username} just logged in`);    //regular function using shorthand notation - arrow function does not bind the value to the keyword
+        //see chaining below, this does not specify a return value so results in 'undefined'
+        return this;        //now method chaining will work since return is a value and not undefined 
+    }               
+
+    logout(){
+        console.log(`${this.username} just logged out`);    //regular function using shorthand notation - arrow function does not bind the value to the keyword
+        //see chaining below, this does not specify a return value so results in 'undefined'
+        return this;        //now method chaining will work since return is a value and not undefined 
     }
+    incScore(){
+        this.score += 1;
+        console.log(`${this.username} has a score of: ${this.score}`);
+        //see chaining below, this does not specify a return value so results in 'undefined'
+        return this;        //now method chaining will work since return is a value and not undefined 
+    }    
 }
 //the new keyword
 //1 - it creates a new empty object {}
@@ -79,10 +94,33 @@ class User {
 // const userTwo= new User();   //So see below how to avoid creating identical objects
 
 //#118. Class constructors
+// const userOne= new User('mario', 'mario@rococode.scot');
+// const userTwo= new User('luigi', 'luigi@rococode.scot'); //each one (object) is an instance of the user class
+
+// console.log(userOne, userTwo);
+    
+//#119. Class Methods & Method Chaining - finding the methods
+//for using two consecutive methods on one object means two statements:
+//userOne.login();  //followed by:
+//userTwo.logout();
+//if method chaining used at this point - userOne.login(), logout() - would not work because...
+//unless funcion specifies 'return', java will assign function result as 'undefined' - oh, I see(?)
+// userOne.login().incScore().incScore().logout();
+// userTwo.login().incScore().incScore().logout(); 
+
+//#120. Class Inheritance (subclasses)
+class Admin extends User{    //Admin has all User properties now add more  properties
+    deleteUser(){
+
+
+    }
+}
+
 const userOne= new User('mario', 'mario@rococode.scot');
 const userTwo= new User('luigi', 'luigi@rococode.scot'); //each one (object) is an instance of the user class
+const userThree= new Admin('roco', 'roco.coding@gmail.com');
 
-console.log(userOne, userTwo);
-userOne.login();
-userTwo.login();     
-//#119. Class Methods & Method Chaining - finding the methods
+console.log(userOne, userTwo, userThree);
+
+let users= [userOne, userTwo, userThree];
+console.log(users);
