@@ -109,18 +109,30 @@ class User {
 // userTwo.login().incScore().incScore().logout(); 
 
 //#120. Class Inheritance (subclasses)
-class Admin extends User{    //Admin has all User properties now add more  properties
-    deleteUser(){
-
-
+class Admin extends User{    //Admin sub-class inherits all User properties now add more  properties
+ constructor (username, email, title){            //create properties available only to Admin class 
+    super(username, email);  //declared otherwise User constructor would not run
+    this.title= title;
+}
+    deleteUser(user){
+        //  users = users.filter((u) => {
+        //     return u.username != user.username
+        //  })
+        //can be tidied up as follows:
+        users = users.filter(u => u.username != user.username);
     }
 }
 
 const userOne= new User('mario', 'mario@rococode.scot');
 const userTwo= new User('luigi', 'luigi@rococode.scot'); //each one (object) is an instance of the user class
-const userThree= new Admin('roco', 'roco.coding@gmail.com');
+const userThree= new Admin('roco', 'roco.coding@gmail.com', 'Super Coder');
 
-console.log(userOne, userTwo, userThree);
+// console.log(userOne, userTwo, userThree);
 
-let users= [userOne, userTwo, userThree];
-console.log(users);
+// let users= [userOne, userTwo, userThree];
+// console.log(users);
+// userThree.deleteUser(userTwo);
+// console.log(users);
+
+//#121. Super( ) - class constructor for additional properties
+console.log(userThree);
